@@ -1,9 +1,8 @@
 module.exports = {
   extend: "stylelint-config-sass-guidelines",
   rules: {
-    "indentation": "tab",
+    "indentation": 2,
     "number-leading-zero": null,
-    "color-hex-case": "upper",
     "color-hex-length": "long",
   }
 }
