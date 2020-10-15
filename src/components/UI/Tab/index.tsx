@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Tab = styled.button<Props>`
-  margin: 0 0.2rem;
+  margin: 0 0.4rem;
   padding: 1.4rem 2.5rem 1.6rem;
   font-size: var(--font-size-3);
   line-height: var(--line-height-2);

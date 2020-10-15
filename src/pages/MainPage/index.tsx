@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Tab from "../../components/UI/Tab";
+import Sort from "../../components/UI/Sort";
 
 const Section = styled.section`
   padding: 4rem 5.3rem 9.6rem 6.7rem;
@@ -10,6 +11,7 @@ const Section = styled.section`
 const Controls = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Tabs = styled.ul`
@@ -40,6 +42,7 @@ function MainPage(): JSX.Element {
             );
           })}
         </Tabs>
+        <Sort />
       </Controls>
     </Section>
   );

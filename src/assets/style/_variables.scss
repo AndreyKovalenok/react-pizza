@@ -1,5 +1,6 @@
 :root {
   --color-white: #ffffff;
+  --color-black: #000000;
   --color-main-layout: #ffdf8c;
   --color-main: #FE5F1E;
   --color-gray-1: #181818;
@@ -8,6 +9,9 @@
   --color-gray-4: #2C2C2C;
   --color-gray-5: #282828;
   --color-gray-6: #F9F9F9;
+  --color-black-opac-1: rgba(0, 0 ,0 , 0.09);
+  --color-black-opac-2: rgba(0, 0, 0 , 0.03);
+  --color-main-opac-1: rgba(254, 95, 30, 0.05);
   --font-size-1: 1.2rem;
   --font-size-2: 1.4rem;
   --font-size-3: 1.6rem;
