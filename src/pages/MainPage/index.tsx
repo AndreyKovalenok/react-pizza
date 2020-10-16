@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 import Tab from "../../components/UI/Tab";
 import Sort from "../../components/UI/Sort";
+import Pizza from "../../components/Pizza";
+
+import image0 from "./image-0.png";
+import image1 from "./image-1.png";
+import image2 from "./image-2.png";
+import image3 from "./image-3.png";
 
 const Section = styled.section`
   padding: 4rem 5.3rem 9.6rem 6.7rem;
@@ -12,12 +18,29 @@ const Controls = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3.2rem;
 `;
 
 const Tabs = styled.ul`
   display: flex;
   justify-content: flex-start;
   margin: 0 -0.4rem;
+`;
+
+const Content = styled.div``;
+
+const ContentTitle = styled.p`
+  margin-bottom: 3.5rem;
+  font-size: var(--font-size-6);
+  line-height: var(--line-height-7);
+  font-weight: var(--bold-weight);
+`;
+
+const PizzaWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 3.5rem;
+  grid-row-gap: 6.5rem;
 `;
 
 function MainPage(): JSX.Element {
@@ -28,6 +51,48 @@ function MainPage(): JSX.Element {
     { id: 3, text: "Гриль" },
     { id: 4, text: "Острые" },
     { id: 5, text: "Закрытые" },
+  ];
+  const pizza = [
+    {
+      image: image0,
+      title: "Чизбургер-пицца",
+      price: 395,
+    },
+    {
+      image: image1,
+      title: "Сырная",
+      price: 450,
+    },
+    {
+      image: image2,
+      title: "Креветки по-азиатски",
+      price: 290,
+    },
+    {
+      image: image3,
+      title: "Сырный цыпленок",
+      price: 385,
+    },
+    {
+      image: image0,
+      title: "Чизбургер-пицца",
+      price: 395,
+    },
+    {
+      image: image1,
+      title: "Сырная",
+      price: 450,
+    },
+    {
+      image: image2,
+      title: "Креветки по-азиатски",
+      price: 290,
+    },
+    {
+      image: image3,
+      title: "Сырный цыпленок",
+      price: 385,
+    },
   ];
 
   return (
@@ -44,6 +109,14 @@ function MainPage(): JSX.Element {
         </Tabs>
         <Sort />
       </Controls>
+      <Content>
+        <ContentTitle>Все пиццы</ContentTitle>
+        <PizzaWrap>
+          {pizza.map(({ image, title, price }) => {
+            return <Pizza image={image} title={title} price={price} />;
+          })}
+        </PizzaWrap>
+      </Content>
     </Section>
   );
 }
