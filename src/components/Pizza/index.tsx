@@ -55,6 +55,13 @@ const ControlsButton = styled.button<ButtonProps>`
   box-shadow: ${(p) =>
     p.active && "0 0.2rem 0.4rem var(----color-black-opac-3)"};
   cursor: pointer;
+  transition: 0.2s background-color;
+
+  &:hover {
+    background-color: var(--color-whire-opac-1);
+    border-radous: 0.5rem;
+    box-shadow: none;
+  }
 `;
 
 const PizzaPrice = styled.p`
@@ -73,6 +80,17 @@ const AddButton = styled.button`
   border-radius: 3rem;
   border: 0.1rem solid var(--color-main);
   cursor: pointer;
+  transition: 0.2s all;
+
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--color-main);
+    border-color: var(--color-main);
+  }
+
+  &:hover > svg path {
+    fill: var(--color-white);
+  }
 `;
 
 const AddIcon = styled.svg`

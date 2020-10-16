@@ -62,6 +62,7 @@ const SortDropdownButton = styled.button<SortDropdownButtonProps>`
   color: ${(p) => p.active && "var(--color-main)"};
   background-color: ${(p) => p.active && "var(--color-main-opac-1)"};
   cursor: pointer;
+  transition: 0.2s background-color;
 `;
 
 function Sort(): JSX.Element {
