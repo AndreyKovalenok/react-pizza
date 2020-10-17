@@ -2,7 +2,7 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
-import { setDoughType } from "../../redux/actions/pizzaData";
+import { setDoughType, setPizzaSize } from "../../redux/actions/pizzaData";
 
 import { IPizzaItem } from "../../redux/reducers/pizzaData";
 
@@ -121,6 +121,13 @@ const mapDispatch = {
     pizzaId: number;
     doughId: number;
   }) => setDoughType({ pizzaId, doughId }),
+  dispatchSetPizzaSize: ({
+    pizzaId,
+    sizesId,
+  }: {
+    pizzaId: number;
+    sizesId: number;
+  }) => setPizzaSize({ pizzaId, sizesId }),
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -137,6 +144,7 @@ const Pizza = ({
   dough,
   sizes,
   dispatchSetDoughType,
+  dispatchSetPizzaSize,
 }: Props): JSX.Element => {
   return (
     <StyledPizza>
@@ -171,6 +179,9 @@ const Pizza = ({
                   active={selected}
                   type="button"
                   disabled={!enabled}
+                  onClick={() => {
+                    dispatchSetPizzaSize({ pizzaId: id, sizesId });
+                  }}
                 >
                   {sizesTitle}
                 </ControlsButton>

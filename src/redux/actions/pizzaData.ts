@@ -1,4 +1,4 @@
-import { SET_DOUGH } from "./ACTION_TYPES";
+import { SET_DOUGH, SET_PIZZA_SIZE } from "./ACTION_TYPES";
 
 interface IDoughTypePayload {
   pizzaId: number;
@@ -15,6 +15,24 @@ export function setDoughType({
   return {
     type: SET_DOUGH,
     payload: { pizzaId, doughId },
+  };
+}
+
+interface IPizzaSizeTypePayload {
+  pizzaId: number;
+  sizesId: number;
+}
+
+export function setPizzaSize({
+  pizzaId,
+  sizesId,
+}: IPizzaSizeTypePayload): {
+  type: string;
+  payload: IPizzaSizeTypePayload;
+} {
+  return {
+    type: SET_PIZZA_SIZE,
+    payload: { pizzaId, sizesId },
   };
 }
 

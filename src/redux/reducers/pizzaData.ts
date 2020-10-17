@@ -1,4 +1,4 @@
-import { SET_DOUGH } from "../actions/ACTION_TYPES";
+import { SET_DOUGH, SET_PIZZA_SIZE } from "../actions/ACTION_TYPES";
 
 import image0 from "../../pages/MainPage/image-0.png";
 import image1 from "../../pages/MainPage/image-1.png";
@@ -355,7 +355,8 @@ export default function pizzaData(
     type: string;
     payload: {
       pizzaId: number;
-      doughId: number;
+      doughId?: number;
+      sizesId?: number;
     };
   }
 ): Array<IPizzaItem> {
@@ -371,6 +372,22 @@ export default function pizzaData(
             return { ...item, selected: false };
           });
           currentEl.dough = currentElDough;
+
+          return currentEl;
+        }
+        return el;
+      });
+    case SET_PIZZA_SIZE:
+      return state.map((el) => {
+        if (el.id === payload.pizzaId) {
+          const currentEl = { ...el };
+          const currentElSize = currentEl.sizes.map((item) => {
+            if (item.id === payload.sizesId) {
+              return { ...item, selected: true };
+            }
+            return { ...item, selected: false };
+          });
+          currentEl.sizes = currentElSize;
 
           return currentEl;
         }
