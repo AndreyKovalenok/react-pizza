@@ -54,41 +54,49 @@ function MainPage(): JSX.Element {
   ];
   const pizza = [
     {
+      id: 0,
       image: image0,
       title: "Чизбургер-пицца",
       price: 395,
     },
     {
+      id: 1,
       image: image1,
       title: "Сырная",
       price: 450,
     },
     {
+      id: 2,
       image: image2,
       title: "Креветки по-азиатски",
       price: 290,
     },
     {
+      id: 3,
       image: image3,
       title: "Сырный цыпленок",
       price: 385,
     },
     {
+      id: 4,
       image: image0,
       title: "Чизбургер-пицца",
       price: 395,
     },
     {
+      id: 5,
       image: image1,
       title: "Сырная",
       price: 450,
     },
     {
+      id: 6,
       image: image2,
       title: "Креветки по-азиатски",
       price: 290,
     },
     {
+      id: 7,
       image: image3,
       title: "Сырный цыпленок",
       price: 385,
@@ -112,8 +120,8 @@ function MainPage(): JSX.Element {
       <Content>
         <ContentTitle>Все пиццы</ContentTitle>
         <PizzaWrap>
-          {pizza.map(({ image, title, price }) => {
-            return <Pizza image={image} title={title} price={price} />;
+          {pizza.map(({ id, image, title, price }) => {
+            return <Pizza key={id} image={image} title={title} price={price} />;
           })}
         </PizzaWrap>
       </Content>
