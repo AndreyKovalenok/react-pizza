@@ -141,6 +141,7 @@ const Pizza = ({
   image,
   title,
   price,
+  totalPrice,
   dough,
   sizes,
   dispatchSetDoughType,
@@ -191,7 +192,9 @@ const Pizza = ({
         </PizzasRow>
       </PizzaControls>
       <PizzasRow>
-        <PizzaPrice>от {price}</PizzaPrice>
+        <PizzaPrice>
+          {totalPrice === price ? `от ${totalPrice}` : `за ${totalPrice}`}
+        </PizzaPrice>
         <AddButton type="button">
           <AddIcon
             width="12"

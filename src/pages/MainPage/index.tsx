@@ -74,7 +74,15 @@ function MainPage({
         <ContentTitle>Все пиццы</ContentTitle>
         <PizzaWrap>
           {pizzaData.map(
-            ({ id, image, title, price, dough, sizes }: IPizzaItem) => {
+            ({
+              id,
+              image,
+              title,
+              price,
+              totalPrice,
+              dough,
+              sizes,
+            }: IPizzaItem) => {
               return (
                 <Pizza
                   key={id}
@@ -82,6 +90,7 @@ function MainPage({
                   image={image}
                   title={title}
                   price={price}
+                  totalPrice={totalPrice}
                   dough={dough}
                   sizes={sizes}
                 />

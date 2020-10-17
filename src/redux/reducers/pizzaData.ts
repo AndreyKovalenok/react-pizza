@@ -10,14 +10,17 @@ export interface IPizzaItem {
   image: string;
   title: string;
   price: number;
+  totalPrice: number;
   dough: Array<{
     id: number;
+    additionPrice: number;
     title: string;
     enabled: boolean;
     selected: boolean;
   }>;
   sizes: Array<{
     id: number;
+    additionPrice: number;
     title: string;
     enabled: boolean;
     selected: boolean;
@@ -30,15 +33,18 @@ const initialState: Array<IPizzaItem> = [
     image: image0,
     title: "Чизбургер-пицца",
     price: 395,
+    totalPrice: 395,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: true,
         selected: false,
@@ -47,18 +53,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: true,
         selected: false,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: true,
         selected: false,
@@ -70,15 +79,18 @@ const initialState: Array<IPizzaItem> = [
     image: image1,
     title: "Сырная",
     price: 450,
+    totalPrice: 450,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: true,
         selected: false,
@@ -87,18 +99,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: false,
         selected: false,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: false,
         selected: false,
@@ -110,15 +125,18 @@ const initialState: Array<IPizzaItem> = [
     image: image2,
     title: "Креветки по-азиатски",
     price: 290,
+    totalPrice: 460,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: false,
         selected: false,
@@ -127,18 +145,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: false,
         selected: false,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: false,
         selected: false,
@@ -150,15 +171,18 @@ const initialState: Array<IPizzaItem> = [
     image: image3,
     title: "Сырный цыпленок",
     price: 385,
+    totalPrice: 385,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: true,
         selected: false,
@@ -167,18 +191,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: true,
         selected: false,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: true,
         selected: false,
@@ -190,15 +217,18 @@ const initialState: Array<IPizzaItem> = [
     image: image0,
     title: "Чизбургер-пицца",
     price: 395,
+    totalPrice: 435,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: false,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: true,
         selected: true,
@@ -207,18 +237,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: true,
         selected: false,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: true,
         selected: false,
@@ -230,15 +263,18 @@ const initialState: Array<IPizzaItem> = [
     image: image1,
     title: "Сырная",
     price: 450,
+    totalPrice: 450,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: true,
         selected: false,
@@ -247,18 +283,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: false,
         selected: false,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: false,
         selected: false,
@@ -270,15 +309,18 @@ const initialState: Array<IPizzaItem> = [
     image: image2,
     title: "Креветки по-азиатски",
     price: 290,
+    totalPrice: 460,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: false,
         selected: false,
@@ -287,18 +329,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: false,
         selected: false,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: false,
         selected: false,
@@ -310,15 +355,18 @@ const initialState: Array<IPizzaItem> = [
     image: image3,
     title: "Сырный цыпленок",
     price: 385,
+    totalPrice: 385,
     dough: [
       {
         id: 0,
+        additionPrice: 0,
         title: "тонкое",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 40,
         title: "традиционное",
         enabled: true,
         selected: false,
@@ -327,18 +375,21 @@ const initialState: Array<IPizzaItem> = [
     sizes: [
       {
         id: 0,
+        additionPrice: 0,
         title: "26 см.",
         enabled: true,
         selected: true,
       },
       {
         id: 1,
+        additionPrice: 170,
         title: "30 см.",
         enabled: true,
         selected: false,
       },
       {
         id: 2,
+        additionPrice: 350,
         title: "40 см.",
         enabled: true,
         selected: false,
@@ -365,14 +416,19 @@ export default function pizzaData(
       return state.map((el) => {
         if (el.id === payload.pizzaId) {
           const currentEl = { ...el };
+          let additionPrice = 0;
           const currentElDough = currentEl.dough.map((item) => {
+            if (item.selected) {
+              currentEl.totalPrice -= item.additionPrice;
+            }
             if (item.id === payload.doughId) {
+              additionPrice = item.additionPrice;
               return { ...item, selected: true };
             }
             return { ...item, selected: false };
           });
           currentEl.dough = currentElDough;
-
+          currentEl.totalPrice += additionPrice;
           return currentEl;
         }
         return el;
@@ -381,14 +437,19 @@ export default function pizzaData(
       return state.map((el) => {
         if (el.id === payload.pizzaId) {
           const currentEl = { ...el };
+          let additionPrice = 0;
           const currentElSize = currentEl.sizes.map((item) => {
+            if (item.selected) {
+              currentEl.totalPrice -= item.additionPrice;
+            }
             if (item.id === payload.sizesId) {
+              additionPrice = item.additionPrice;
               return { ...item, selected: true };
             }
             return { ...item, selected: false };
           });
           currentEl.sizes = currentElSize;
-
+          currentEl.totalPrice += additionPrice;
           return currentEl;
         }
         return el;
