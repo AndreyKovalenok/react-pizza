@@ -1,11 +1,11 @@
-import { ActionTypes } from "../actions/actions";
+import { SET_DOUGH } from "../actions/ACTION_TYPES";
 
 import image0 from "../../pages/MainPage/image-0.png";
 import image1 from "../../pages/MainPage/image-1.png";
 import image2 from "../../pages/MainPage/image-2.png";
 import image3 from "../../pages/MainPage/image-3.png";
 
-export interface PizzaItem {
+export interface IPizzaItem {
   id: number;
   image: string;
   title: string;
@@ -24,7 +24,7 @@ export interface PizzaItem {
   }>;
 }
 
-const initialState: Array<PizzaItem> = [
+const initialState: Array<IPizzaItem> = [
   {
     id: 0,
     image: image0,
@@ -346,12 +346,36 @@ const initialState: Array<PizzaItem> = [
     ],
   },
 ];
-
 export default function pizzaData(
   state = initialState,
-  { type, payload }: ActionTypes
-): Array<PizzaItem> {
+  {
+    type,
+    payload,
+  }: {
+    type: string;
+    payload: {
+      pizzaId: number;
+      doughId: number;
+    };
+  }
+): Array<IPizzaItem> {
   switch (type) {
+    case SET_DOUGH:
+      return state.map((el) => {
+        if (el.id === payload.pizzaId) {
+          const currentEl = { ...el };
+          const currentElDough = currentEl.dough.map((item) => {
+            if (item.id === payload.doughId) {
+              return { ...item, selected: true };
+            }
+            return { ...item, selected: false };
+          });
+          currentEl.dough = currentElDough;
+
+          return currentEl;
+        }
+        return el;
+      });
     default:
       return state;
   }

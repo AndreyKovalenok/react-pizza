@@ -1,7 +1,10 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
-import { PizzaItem } from "../../redux/reducers/pizzaData";
+import { setDoughType } from "../../redux/actions/pizzaData";
+
+import { IPizzaItem } from "../../redux/reducers/pizzaData";
 
 const StyledPizza = styled.div`
   display: flex;
@@ -61,12 +64,13 @@ const ControlsButton = styled.button<ButtonProps>`
   transition: 0.2s background-color;
 
   &:hover:not(:disabled) {
-    background-color: var(--color-whire-opac-1);
+    background-color: ${(p) => !p.active && "var(--color-whire-opac-1)"};
     border-radous: 0.5rem;
     box-shadow: none;
   }
 
   &:disabled {
+    opacity: 0.2;
     color: var(--color-gray-4);
     cursor: default;
   }
@@ -105,6 +109,26 @@ const AddIcon = styled.svg`
   margin-right: 0.8rem;
 `;
 
+const mapState = () => {
+  return {};
+};
+
+const mapDispatch = {
+  dispatchSetDoughType: ({
+    pizzaId,
+    doughId,
+  }: {
+    pizzaId: number;
+    doughId: number;
+  }) => setDoughType({ pizzaId, doughId }),
+};
+
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type Props = PropsFromRedux & IPizzaItem;
+
 const Pizza = ({
   id,
   image,
@@ -112,7 +136,8 @@ const Pizza = ({
   price,
   dough,
   sizes,
-}: PizzaItem): JSX.Element => {
+  dispatchSetDoughType,
+}: Props): JSX.Element => {
   return (
     <StyledPizza>
       <ContentImage src={image} />
@@ -127,6 +152,9 @@ const Pizza = ({
                   active={selected}
                   type="button"
                   disabled={!enabled}
+                  onClick={() => {
+                    dispatchSetDoughType({ pizzaId: id, doughId });
+                  }}
                 >
                   {doughTitle}
                 </ControlsButton>
@@ -173,4 +201,4 @@ const Pizza = ({
   );
 };
 
-export default Pizza;
+export default connector(Pizza);

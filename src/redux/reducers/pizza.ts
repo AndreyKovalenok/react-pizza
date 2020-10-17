@@ -1,19 +1,17 @@
-import { ActionTypes } from "../actions/actions";
-
-export interface PizzaState {
+export interface IPizzaState {
   totalPrice: number;
   totalCount: number;
 }
 
-const initialState: PizzaState = {
+const initialState: IPizzaState = {
   totalPrice: 530,
   totalCount: 3,
 };
 
 export default function pizza(
   state = initialState,
-  { type, payload }: ActionTypes
-): PizzaState {
+  { type }: { type: string }
+): IPizzaState {
   switch (type) {
     default:
       return state;

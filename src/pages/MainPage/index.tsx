@@ -6,8 +6,8 @@ import Tab from "../../components/UI/Tab";
 import Sort from "../../components/UI/Sort";
 import Pizza from "../../components/Pizza";
 
-import { StateInterface } from "../../redux/rootReducer";
-import { PizzaItem } from "../../redux/reducers/pizzaData";
+import { IStateInterface } from "../../redux/rootReducer";
+import { IPizzaItem } from "../../redux/reducers/pizzaData";
 
 const Section = styled.section`
   padding: 4rem 5.3rem 9.6rem 6.7rem;
@@ -42,7 +42,11 @@ const PizzaWrap = styled.div`
   grid-row-gap: 6.5rem;
 `;
 
-function MainPage({ pizzaData }: { pizzaData: Array<PizzaItem> }): JSX.Element {
+function MainPage({
+  pizzaData,
+}: {
+  pizzaData: Array<IPizzaItem>;
+}): JSX.Element {
   const tabs = [
     { id: 0, text: "Все" },
     { id: 1, text: "Мясные" },
@@ -70,7 +74,7 @@ function MainPage({ pizzaData }: { pizzaData: Array<PizzaItem> }): JSX.Element {
         <ContentTitle>Все пиццы</ContentTitle>
         <PizzaWrap>
           {pizzaData.map(
-            ({ id, image, title, price, dough, sizes }: PizzaItem) => {
+            ({ id, image, title, price, dough, sizes }: IPizzaItem) => {
               return (
                 <Pizza
                   key={id}
@@ -90,7 +94,7 @@ function MainPage({ pizzaData }: { pizzaData: Array<PizzaItem> }): JSX.Element {
   );
 }
 
-function mapStateToProps({ pizzaData }: StateInterface) {
+function mapStateToProps({ pizzaData }: IStateInterface) {
   return {
     pizzaData,
   };

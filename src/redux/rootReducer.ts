@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
-import pizza, { PizzaState } from "./reducers/pizza";
-import pizzaData, { PizzaItem } from "./reducers/pizzaData";
+import pizza, { IPizzaState } from "./reducers/pizza";
+import pizzaData, { IPizzaItem } from "./reducers/pizzaData";
 
-export interface StateInterface {
-  pizza: PizzaState;
-  pizzaData: Array<PizzaItem>;
+export interface IStateInterface {
+  pizza: IPizzaState;
+  pizzaData: Array<IPizzaItem>;
 }
 
-export interface ActionTypes {
+export interface IActionTypes {
   type: string;
   payload: unknown;
 }
