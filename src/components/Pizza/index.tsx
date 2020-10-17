@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { PizzaItem } from "../../redux/reducers/pizzaData";
+
 const StyledPizza = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,6 +42,7 @@ const PizzasRow = styled.div`
 
 interface ButtonProps {
   active?: boolean;
+  enabled?: boolean;
 }
 
 const ControlsButton = styled.button<ButtonProps>`
@@ -57,10 +60,15 @@ const ControlsButton = styled.button<ButtonProps>`
   cursor: pointer;
   transition: 0.2s background-color;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-whire-opac-1);
     border-radous: 0.5rem;
     box-shadow: none;
+  }
+
+  &:disabled {
+    color: var(--color-gray-4);
+    cursor: default;
   }
 `;
 
@@ -97,30 +105,50 @@ const AddIcon = styled.svg`
   margin-right: 0.8rem;
 `;
 
-interface PizzaProps {
-  image: string;
-  title: string;
-  price: number;
-}
-
-const Pizza = ({ image, title, price }: PizzaProps): JSX.Element => {
+const Pizza = ({
+  id,
+  image,
+  title,
+  price,
+  dough,
+  sizes,
+}: PizzaItem): JSX.Element => {
   return (
     <StyledPizza>
       <ContentImage src={image} />
       <PizzaTitle>{title}</PizzaTitle>
       <PizzaControls>
         <PizzasRow>
-          <ControlsButton active type="button">
-            тонкое
-          </ControlsButton>
-          <ControlsButton type="button">традиционное</ControlsButton>
+          {dough.map(
+            ({ id: doughId, title: doughTitle, enabled, selected }) => {
+              return (
+                <ControlsButton
+                  key={doughId}
+                  active={selected}
+                  type="button"
+                  disabled={!enabled}
+                >
+                  {doughTitle}
+                </ControlsButton>
+              );
+            }
+          )}
         </PizzasRow>
         <PizzasRow>
-          <ControlsButton active type="button">
-            26 см.
-          </ControlsButton>
-          <ControlsButton type="button">30 см.</ControlsButton>
-          <ControlsButton type="button">40 см.</ControlsButton>
+          {sizes.map(
+            ({ id: sizesId, title: sizesTitle, enabled, selected }) => {
+              return (
+                <ControlsButton
+                  key={sizesId}
+                  active={selected}
+                  type="button"
+                  disabled={!enabled}
+                >
+                  {sizesTitle}
+                </ControlsButton>
+              );
+            }
+          )}
         </PizzasRow>
       </PizzaControls>
       <PizzasRow>

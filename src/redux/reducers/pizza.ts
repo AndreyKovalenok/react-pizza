@@ -1,19 +1,16 @@
-interface PizzaState {
+import { ActionTypes } from "../actions/actions";
+
+export interface PizzaState {
   totalPrice: number;
   totalCount: number;
 }
 
-interface ActionTypes {
-  type: string;
-  payload: unknown;
-}
-
 const initialState: PizzaState = {
-  totalPrice: 520,
+  totalPrice: 530,
   totalCount: 3,
 };
 
-export default function pizzaReducer(
+export default function pizza(
   state = initialState,
   { type, payload }: ActionTypes
 ): PizzaState {
