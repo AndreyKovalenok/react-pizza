@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import pizza, { IPizzaState } from "./reducers/pizza";
+import basket, { IBasket } from "./reducers/basket";
 import pizzaData, { IPizzaItem } from "./reducers/pizzaData";
 
-export interface IStateInterface {
-  pizza: IPizzaState;
+export interface IState {
+  basket: IBasket;
   pizzaData: Array<IPizzaItem>;
 }
 
@@ -12,6 +12,6 @@ export interface IActionTypes {
   payload: unknown;
 }
 
-const rootReducer = combineReducers({ pizza, pizzaData });
+const rootReducer = combineReducers({ basket, pizzaData });
 
 export default rootReducer;

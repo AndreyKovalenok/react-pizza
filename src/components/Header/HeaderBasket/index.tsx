@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { IPizzaState } from "../../../redux/reducers/pizza";
-import { IStateInterface } from "../../../redux/rootReducer";
+import { IBasket } from "../../../redux/reducers/basket";
+import { IState } from "../../../redux/rootReducer";
 
 import basketImage from "./basket.svg";
 
@@ -51,7 +51,7 @@ const TotalCount = styled.span`
   }
 `;
 
-function HeaderBasket({ totalPrice, totalCount }: IPizzaState): JSX.Element {
+function HeaderBasket({ totalPrice, totalCount }: IBasket): JSX.Element {
   return (
     <StyledHeaderBasket>
       <TotalPrice>
@@ -62,10 +62,10 @@ function HeaderBasket({ totalPrice, totalCount }: IPizzaState): JSX.Element {
   );
 }
 
-function mapStateToProps({ pizza }: IStateInterface) {
+function mapStateToProps({ basket }: IState) {
   return {
-    totalCount: pizza.totalCount,
-    totalPrice: pizza.totalPrice,
+    totalCount: basket.totalCount,
+    totalPrice: basket.totalPrice,
   };
 }
 

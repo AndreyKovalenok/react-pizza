@@ -3,6 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
 import { setDoughType, setPizzaSize } from "../../redux/actions/pizzaData";
+import { addToBasket } from "../../redux/actions/basket";
 
 import { IPizzaItem } from "../../redux/reducers/pizzaData";
 
@@ -128,6 +129,8 @@ const mapDispatch = {
     pizzaId: number;
     sizesId: number;
   }) => setPizzaSize({ pizzaId, sizesId }),
+  dispatchAddToBasket: (totalPizzaPrice: number) =>
+    addToBasket(totalPizzaPrice),
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -146,6 +149,7 @@ const Pizza = ({
   sizes,
   dispatchSetDoughType,
   dispatchSetPizzaSize,
+  dispatchAddToBasket,
 }: Props): JSX.Element => {
   return (
     <StyledPizza>
@@ -195,7 +199,10 @@ const Pizza = ({
         <PizzaPrice>
           {totalPrice === price ? `от ${totalPrice}` : `за ${totalPrice}`}
         </PizzaPrice>
-        <AddButton type="button">
+        <AddButton
+          type="button"
+          onClick={() => dispatchAddToBasket(totalPrice)}
+        >
           <AddIcon
             width="12"
             height="12"

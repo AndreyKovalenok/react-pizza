@@ -6,7 +6,7 @@ import Tab from "../../components/UI/Tab";
 import Sort from "../../components/UI/Sort";
 import Pizza from "../../components/Pizza";
 
-import { IStateInterface } from "../../redux/rootReducer";
+import { IState } from "../../redux/rootReducer";
 import { IPizzaItem } from "../../redux/reducers/pizzaData";
 
 const Section = styled.section`
@@ -103,7 +103,7 @@ function MainPage({
   );
 }
 
-function mapStateToProps({ pizzaData }: IStateInterface) {
+function mapStateToProps({ pizzaData }: IState) {
   return {
     pizzaData,
   };
