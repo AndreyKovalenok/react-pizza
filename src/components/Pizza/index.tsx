@@ -230,6 +230,7 @@ const Pizza = ({
               ),
               price: totalPrice,
               count: 1,
+              image,
             })
           }
         >

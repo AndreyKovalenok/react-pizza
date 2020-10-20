@@ -12,6 +12,7 @@ export interface IBasketItem {
   };
   count: number;
   price: number;
+  image: string;
 }
 
 export function addToBasket(
