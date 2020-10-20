@@ -14,7 +14,7 @@ function App(): JSX.Element {
         <PageContent>
           <Header />
           <Switch>
-            <Route path="basketPage" component={BasketPage} />
+            <Route path="/basketPage" component={BasketPage} />
             <Route path="/" exact component={MainPage} />
           </Switch>
         </PageContent>
