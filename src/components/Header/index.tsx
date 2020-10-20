@@ -1,4 +1,5 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 
 import style from "./style.module.scss";
 
@@ -9,7 +10,9 @@ function Header(): JSX.Element {
   return (
     <header className={style.header}>
       <Logo />
-      <HeaderBasket />
+      <Switch>
+        <Route path="/" exact component={HeaderBasket} />
+      </Switch>
     </header>
   );
 }

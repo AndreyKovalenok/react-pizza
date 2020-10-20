@@ -1,16 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 import { IBasket } from "../../../redux/reducers/basket";
 import { IState } from "../../../redux/rootReducer";
 
 import basketImage from "./basket.svg";
 
-const StyledHeaderBasket = styled.button`
+const StyledHeaderBasket = styled(NavLink)`
   padding: 1.5rem 2.3rem;
   background-color: var(--color-main);
   border-radius: 3rem;
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-2);
+  font-weight: var(--bold-weight);
   color: var(--color-white);
   cursor: pointer;
 `;
@@ -53,7 +57,7 @@ const TotalCount = styled.span`
 
 function HeaderBasket({ totalPrice, totalCount }: IBasket): JSX.Element {
   return (
-    <StyledHeaderBasket>
+    <StyledHeaderBasket to="/basketPage">
       <TotalPrice>
         {totalPrice} ₽<DividingLine />
       </TotalPrice>
