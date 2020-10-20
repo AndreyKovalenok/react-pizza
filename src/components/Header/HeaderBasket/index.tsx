@@ -66,6 +66,7 @@ function mapStateToProps({ basket }: IState) {
   return {
     totalCount: basket.totalCount,
     totalPrice: basket.totalPrice,
+    pizzasList: basket.pizzasList,
   };
 }
 

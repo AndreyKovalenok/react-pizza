@@ -1,14 +1,28 @@
 import { ADD_TO_BASKET } from "./ACTION_TYPES";
 
+export interface IBasketItem {
+  pizzaId: number;
+  dough: {
+    id: number;
+    title: string;
+  };
+  size: {
+    id: number;
+    title: string;
+  };
+  count: number;
+  price: number;
+}
+
 export function addToBasket(
-  totalPizzaPrice: number
+  basketItem: IBasketItem
 ): {
   type: string;
-  payload: number;
+  payload: IBasketItem;
 } {
   return {
     type: ADD_TO_BASKET,
-    payload: totalPizzaPrice,
+    payload: basketItem,
   };
 }
 

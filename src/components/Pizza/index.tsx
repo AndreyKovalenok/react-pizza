@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
 import { setDoughType, setPizzaSize } from "../../redux/actions/pizzaData";
-import { addToBasket } from "../../redux/actions/basket";
+import { addToBasket, IBasketItem } from "../../redux/actions/basket";
 
 import { IPizzaItem } from "../../redux/reducers/pizzaData";
 
@@ -129,8 +129,7 @@ const mapDispatch = {
     pizzaId: number;
     sizesId: number;
   }) => setPizzaSize({ pizzaId, sizesId }),
-  dispatchAddToBasket: (totalPizzaPrice: number) =>
-    addToBasket(totalPizzaPrice),
+  dispatchAddToBasket: (basketItem: IBasketItem) => addToBasket(basketItem),
 };
 
 const connector = connect(mapState, mapDispatch);
@@ -151,6 +150,19 @@ const Pizza = ({
   dispatchSetPizzaSize,
   dispatchAddToBasket,
 }: Props): JSX.Element => {
+  const setBasketPropObj = ({
+    id: objId,
+    title: objTitle,
+  }: {
+    id: number;
+    title: string;
+  }) => {
+    return {
+      id: objId,
+      title: objTitle,
+    };
+  };
+
   return (
     <StyledPizza>
       <ContentImage src={image} />
@@ -201,7 +213,25 @@ const Pizza = ({
         </PizzaPrice>
         <AddButton
           type="button"
-          onClick={() => dispatchAddToBasket(totalPrice)}
+          onClick={() =>
+            dispatchAddToBasket({
+              pizzaId: id,
+              dough: setBasketPropObj(
+                dough.find(({ selected }) => selected) || {
+                  id: dough[0].id,
+                  title: dough[0].title,
+                }
+              ),
+              size: setBasketPropObj(
+                sizes.find(({ selected }) => selected) || {
+                  id: sizes[0].id,
+                  title: sizes[0].title,
+                }
+              ),
+              price: totalPrice,
+              count: 1,
+            })
+          }
         >
           <AddIcon
             width="12"
