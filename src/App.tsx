@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Route, Switch } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import PageContent from "./layouts/PageContent";
 import Header from "./components/Header";
@@ -11,7 +12,9 @@ function App(): JSX.Element {
       <MainLayout>
         <PageContent>
           <Header />
-          <MainPage />
+          <Switch>
+            <Route path="/" exact component={MainPage} />
+          </Switch>
         </PageContent>
       </MainLayout>
     </div>
