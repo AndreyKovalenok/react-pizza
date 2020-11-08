@@ -1,17 +1,17 @@
 import { combineReducers } from "redux";
 import basket, { BasketStateType } from "./reducers/basket";
-import pizzaData, { IPizzaItem } from "./reducers/pizzaData";
+import index, { PizzaStateType } from "./reducers/pizzaData";
 
-export interface IState {
+export type StateType = {
   basket: BasketStateType;
-  pizzaData: Array<IPizzaItem>;
-}
+  pizzaData: PizzaStateType;
+};
 
 export interface IActionTypes {
   type: string;
   payload: unknown;
 }
 
-const rootReducer = combineReducers({ basket, pizzaData });
+const rootReducer = combineReducers({ basket, pizzaData: index });
 
 export default rootReducer;

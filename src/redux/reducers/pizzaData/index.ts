@@ -1,12 +1,12 @@
-import image0 from "../../pages/MainPage/image-0.png";
-import image1 from "../../pages/MainPage/image-1.png";
-import image2 from "../../pages/MainPage/image-2.png";
-import image3 from "../../pages/MainPage/image-3.png";
+import image0 from "../../../pages/MainPage/image-0.png";
+import image1 from "../../../pages/MainPage/image-1.png";
+import image2 from "../../../pages/MainPage/image-2.png";
+import image3 from "../../../pages/MainPage/image-3.png";
 
 export const SET_DOUGH = "SET_DOUGH";
 export const SET_PIZZA_SIZE = "SET_PIZZA_SIZE";
 
-export interface IPizzaItem {
+export type PizzaItemType = {
   id: number;
   image: string;
   title: string;
@@ -26,9 +26,9 @@ export interface IPizzaItem {
     enabled: boolean;
     selected: boolean;
   }>;
-}
+};
 
-const initialState: Array<IPizzaItem> = [
+const initialState: Array<PizzaItemType> = [
   {
     id: 0,
     image: image0,
@@ -398,20 +398,22 @@ const initialState: Array<IPizzaItem> = [
     ],
   },
 ];
-export default function pizzaData(
+
+export type PizzaStateType = typeof initialState;
+
+export type PizzaPayloadType = {
+  type: typeof SET_DOUGH | typeof SET_PIZZA_SIZE;
+  payload: {
+    pizzaId: number;
+    doughId?: number;
+    sizesId?: number;
+  };
+};
+
+export default function index(
   state = initialState,
-  {
-    type,
-    payload,
-  }: {
-    type: string;
-    payload: {
-      pizzaId: number;
-      doughId?: number;
-      sizesId?: number;
-    };
-  }
-): Array<IPizzaItem> {
+  { type, payload }: PizzaPayloadType
+): PizzaStateType {
   switch (type) {
     case SET_DOUGH:
       return state.map((el) => {

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 import { BasketStateType } from "../../../redux/reducers/basket";
-import { IState } from "../../../redux/rootReducer";
+import { StateType } from "../../../redux/rootReducer";
 
 import basketImage from "./basket.svg";
 
@@ -69,7 +69,7 @@ function HeaderBasket({
   );
 }
 
-function mapStateToProps({ basket }: IState) {
+function mapStateToProps({ basket }: StateType) {
   return {
     totalCount: basket.totalCount,
     totalPrice: basket.totalPrice,

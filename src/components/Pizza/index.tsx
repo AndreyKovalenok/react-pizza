@@ -2,11 +2,14 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
-import { setDoughType, setPizzaSize } from "../../redux/actions/pizzaData";
+import {
+  setDoughType,
+  setPizzaSize,
+} from "../../redux/reducers/pizzaData/actions";
 import { BasketItemType } from "../../redux/reducers/basket";
 import { addToBasket } from "../../redux/reducers/basket/actions";
 
-import { IPizzaItem } from "../../redux/reducers/pizzaData";
+import { PizzaItemType } from "../../redux/reducers/pizzaData";
 
 const StyledPizza = styled.div`
   display: flex;
@@ -137,7 +140,7 @@ const connector = connect(mapState, mapDispatch);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-type Props = PropsFromRedux & IPizzaItem;
+type Props = PropsFromRedux & PizzaItemType;
 
 const Pizza = ({
   id,

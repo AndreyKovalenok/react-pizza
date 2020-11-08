@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import EmptyBasket from "./EmptyBasket";
 import ActiveBasket from "./ActiveBasket";
-import { IState } from "../../redux/rootReducer";
+import { StateType } from "../../redux/rootReducer";
 import { BasketItemType } from "../../redux/reducers/basket";
 
 const Section = styled.section`
@@ -14,7 +14,7 @@ const Section = styled.section`
   flex: 1;
 `;
 
-const mapState = ({ basket }: IState) => {
+const mapState = ({ basket }: StateType) => {
   return { basket };
 };
 

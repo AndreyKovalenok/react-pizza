@@ -23,14 +23,14 @@ const initialState = {
 
 export type BasketStateType = typeof initialState;
 
-export type PayloadType = {
+export type BasketPayloadType = {
   type: typeof ADD_TO_BASKET;
   payload: BasketItemType;
 };
 
 export default function pizza(
   state = initialState,
-  { type, payload }: PayloadType
+  { type, payload }: BasketPayloadType
 ): BasketStateType {
   const setPizzaItem = () => {
     let newPizzasList: Array<BasketItemType> = [];
