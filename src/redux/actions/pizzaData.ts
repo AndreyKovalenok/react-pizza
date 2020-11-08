@@ -1,4 +1,4 @@
-import { SET_DOUGH, SET_PIZZA_SIZE } from "./ACTION_TYPES";
+import { SET_DOUGH, SET_PIZZA_SIZE } from "../reducers/pizzaData";
 
 interface IDoughTypePayload {
   pizzaId: number;

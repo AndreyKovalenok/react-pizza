@@ -1,4 +1,4 @@
-import { ADD_TO_BASKET } from "./ACTION_TYPES";
+import { ADD_TO_BASKET } from "../reducers/basket";
 
 export interface IBasketItem {
   pizzaId: number;

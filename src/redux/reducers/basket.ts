@@ -1,6 +1,6 @@
-import { ADD_TO_BASKET } from "../actions/ACTION_TYPES";
-
 import { IBasketItem } from "../actions/basket";
+
+export const ADD_TO_BASKET = "ADD_TO_BASKET";
 
 export interface IBasket {
   totalPrice: number;

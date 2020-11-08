@@ -1,9 +1,10 @@
-import { SET_DOUGH, SET_PIZZA_SIZE } from "../actions/ACTION_TYPES";
-
 import image0 from "../../pages/MainPage/image-0.png";
 import image1 from "../../pages/MainPage/image-1.png";
 import image2 from "../../pages/MainPage/image-2.png";
 import image3 from "../../pages/MainPage/image-3.png";
+
+export const SET_DOUGH = "SET_DOUGH";
+export const SET_PIZZA_SIZE = "SET_PIZZA_SIZE";
 
 export interface IPizzaItem {
   id: number;
@@ -417,7 +418,7 @@ export default function pizzaData(
         if (el.id === payload.pizzaId) {
           const currentEl = { ...el };
           let additionPrice = 0;
-          const currentElDough = currentEl.dough.map((item) => {
+          currentEl.dough = currentEl.dough.map((item) => {
             if (item.selected) {
               currentEl.totalPrice -= item.additionPrice;
             }
@@ -427,7 +428,6 @@ export default function pizzaData(
             }
             return { ...item, selected: false };
           });
-          currentEl.dough = currentElDough;
           currentEl.totalPrice += additionPrice;
           return currentEl;
         }
@@ -438,7 +438,7 @@ export default function pizzaData(
         if (el.id === payload.pizzaId) {
           const currentEl = { ...el };
           let additionPrice = 0;
-          const currentElSize = currentEl.sizes.map((item) => {
+          currentEl.sizes = currentEl.sizes.map((item) => {
             if (item.selected) {
               currentEl.totalPrice -= item.additionPrice;
             }
@@ -448,7 +448,6 @@ export default function pizzaData(
             }
             return { ...item, selected: false };
           });
-          currentEl.sizes = currentElSize;
           currentEl.totalPrice += additionPrice;
           return currentEl;
         }
