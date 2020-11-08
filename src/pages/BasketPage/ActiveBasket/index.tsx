@@ -1,11 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 
 import { StateType } from "../../../redux/rootReducer";
 import {
   BasketStateType,
   BasketItemType,
 } from "../../../redux/reducers/basket";
+import { clearBasket } from "../../../redux/reducers/basket/actions";
 
 import {
   BasketFooter,
@@ -32,18 +33,31 @@ const mapState = ({ basket }: StateType) => {
   };
 };
 
-const connector = connect(mapState);
+const mapDispatch = {
+  clearBasket,
+};
+
+const connector = connect(mapState, mapDispatch);
+type PropTypesFromRedux = ConnectedProps<typeof connector>;
+type PropTypes = BasketStateType & PropTypesFromRedux;
 
 function ActiveBasket({
   totalCount,
   totalPrice,
   pizzasList,
-}: BasketStateType): JSX.Element {
+  clearBasket: dispatchClearBasket,
+}: PropTypes): JSX.Element {
   return (
     <StyledActiveBasket>
       <BasketHeader>
         <BasketHeaderTitle>Корзина</BasketHeaderTitle>
-        <BasketHeaderClearButton>Очистить корзину</BasketHeaderClearButton>
+        <BasketHeaderClearButton
+          onClick={() => {
+            dispatchClearBasket();
+          }}
+        >
+          Очистить корзину
+        </BasketHeaderClearButton>
       </BasketHeader>
       <BasketContent>
         {pizzasList.map(

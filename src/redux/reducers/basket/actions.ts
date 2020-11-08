@@ -2,10 +2,11 @@ import {
   ADD_TO_BASKET,
   INCREMENT_COUNT,
   DECREMENT_COUNT,
+  CLEAR_BASKET,
   BasketItemType,
 } from "./index";
 
-export type AddToBasketActionType = {
+type AddToBasketActionType = {
   type: typeof ADD_TO_BASKET;
   payload: BasketItemType;
 };
@@ -22,11 +23,12 @@ type IncrementBasketItemCountPayloadType = {
   dough: { id: number };
   size: { id: number };
 };
-export type IncrementBasketItemCountType = {
+type IncrementBasketItemCountType = {
   type: typeof INCREMENT_COUNT;
 
   payload: IncrementBasketItemCountPayloadType;
 };
+
 export function incrementBasketItemCount(
   pizzaId: number,
   doughId: number,
@@ -43,10 +45,11 @@ type DecrementBasketItemCountPayloadType = {
   dough: { id: number };
   size: { id: number };
 };
-export type DecrementBasketItemCountType = {
+type DecrementBasketItemCountType = {
   type: typeof DECREMENT_COUNT;
   payload: DecrementBasketItemCountPayloadType;
 };
+
 export function decrementBasketItemCount(
   pizzaId: number,
   doughId: number,
@@ -55,5 +58,11 @@ export function decrementBasketItemCount(
   return {
     type: DECREMENT_COUNT,
     payload: { pizzaId, dough: { id: doughId }, size: { id: sizeId } },
+  };
+}
+
+export function clearBasket() {
+  return {
+    type: CLEAR_BASKET,
   };
 }

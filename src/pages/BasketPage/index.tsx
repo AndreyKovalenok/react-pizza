@@ -12,6 +12,7 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   flex: 1;
+  padding: 5rem 0;
 `;
 
 const mapState = ({ basket }: StateType) => {

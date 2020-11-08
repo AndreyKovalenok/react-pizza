@@ -84,6 +84,7 @@ export const BasketHeaderClearButton = styled.button`
   font-size: var(--font-size-3);
   line-height: var(--line-height-2);
   color: var(--color-gray-10);
+  cursor: pointer;
 
   &::before {
     content: "";

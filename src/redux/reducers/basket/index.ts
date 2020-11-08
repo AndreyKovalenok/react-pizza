@@ -1,6 +1,7 @@
 export const ADD_TO_BASKET = "ADD_TO_BASKET";
 export const INCREMENT_COUNT = "INCREMENT_COUNT";
 export const DECREMENT_COUNT = "DECREMENT_COUNT";
+export const CLEAR_BASKET = "CLEAR_BASKET";
 
 export type BasketItemType = {
   pizzaId: number;
@@ -27,7 +28,11 @@ const initialState = {
 export type BasketStateType = typeof initialState;
 
 export type BasketPayloadType = {
-  type: typeof ADD_TO_BASKET | typeof INCREMENT_COUNT | typeof DECREMENT_COUNT;
+  type:
+    | typeof ADD_TO_BASKET
+    | typeof INCREMENT_COUNT
+    | typeof DECREMENT_COUNT
+    | typeof CLEAR_BASKET;
   payload: BasketItemType;
 };
 
@@ -136,6 +141,9 @@ export default function pizza(
         ),
         totalCount: pizzasList.reduce((sum, el) => sum + el.count, 0),
       };
+    }
+    case CLEAR_BASKET: {
+      return initialState;
     }
     default:
       return state;
