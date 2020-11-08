@@ -76,7 +76,6 @@ export const BasketHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 3rem;
-  border-bottom: 0.1rem solid var(--color-gray-9);
 `;
 
 export const BasketHeaderClearButton = styled.button`
@@ -120,3 +119,5 @@ export const BasketHeaderTitle = styled.p`
 export const StyledActiveBasket = styled.div`
   width: min(82rem, 100%);
 `;
+
+export const BasketContent = styled.div``;

@@ -13,7 +13,9 @@ import {
   BasketHeaderClearButton,
   BasketHeaderTitle,
   StyledActiveBasket,
+  BasketContent,
 } from "./styled";
+import PizzaItem from "./PizzaItem";
 
 function ActiveBasket(): JSX.Element {
   return (
@@ -22,6 +24,9 @@ function ActiveBasket(): JSX.Element {
         <BasketHeaderTitle>Корзина</BasketHeaderTitle>
         <BasketHeaderClearButton>Очистить корзину</BasketHeaderClearButton>
       </BasketHeader>
+      <BasketContent>
+        <PizzaItem />
+      </BasketContent>
       <BasketFooter>
         <BasketFooterRow>
           <BasketFooterGroup>
