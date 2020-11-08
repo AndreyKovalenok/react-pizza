@@ -5,7 +5,7 @@ import styled from "styled-components";
 import EmptyBasket from "./EmptyBasket";
 import ActiveBasket from "./ActiveBasket";
 import { IState } from "../../redux/rootReducer";
-import { IBasketItem } from "../../redux/actions/basket";
+import { BasketItemType } from "../../redux/reducers/basket";
 
 const Section = styled.section`
   display: flex;
@@ -20,7 +20,7 @@ const mapState = ({ basket }: IState) => {
 
 const connector = connect(mapState);
 type PropsFromRedux = ConnectedProps<typeof connector>;
-type Props = PropsFromRedux & IBasketItem;
+type Props = PropsFromRedux & BasketItemType;
 
 function BasketPage({ basket: { pizzasList } }: Props): JSX.Element {
   return (

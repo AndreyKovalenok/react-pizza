@@ -3,7 +3,8 @@ import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
 import { setDoughType, setPizzaSize } from "../../redux/actions/pizzaData";
-import { addToBasket, IBasketItem } from "../../redux/actions/basket";
+import { BasketItemType } from "../../redux/reducers/basket";
+import { addToBasket } from "../../redux/reducers/basket/actions";
 
 import { IPizzaItem } from "../../redux/reducers/pizzaData";
 
@@ -129,7 +130,7 @@ const mapDispatch = {
     pizzaId: number;
     sizesId: number;
   }) => setPizzaSize({ pizzaId, sizesId }),
-  dispatchAddToBasket: (basketItem: IBasketItem) => addToBasket(basketItem),
+  dispatchAddToBasket: (basketItem: BasketItemType) => addToBasket(basketItem),
 };
 
 const connector = connect(mapState, mapDispatch);

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import { IBasket } from "../../../redux/reducers/basket";
+import { BasketStateType } from "../../../redux/reducers/basket";
 import { IState } from "../../../redux/rootReducer";
 
 import basketImage from "./basket.svg";
@@ -55,7 +55,10 @@ const TotalCount = styled.span`
   }
 `;
 
-function HeaderBasket({ totalPrice, totalCount }: IBasket): JSX.Element {
+function HeaderBasket({
+  totalPrice,
+  totalCount,
+}: BasketStateType): JSX.Element {
   return (
     <StyledHeaderBasket to="/basketPage">
       <TotalPrice>

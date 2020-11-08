@@ -1,25 +1,39 @@
-import { IBasketItem } from "../actions/basket";
-
 export const ADD_TO_BASKET = "ADD_TO_BASKET";
 
-export interface IBasket {
-  totalPrice: number;
-  totalCount: number;
-  pizzasList: Array<IBasketItem>;
-}
+export type BasketItemType = {
+  pizzaId: number;
+  dough: {
+    id: number;
+    title: string;
+  };
+  size: {
+    id: number;
+    title: string;
+  };
+  count: number;
+  price: number;
+  image: string;
+};
 
-const initialState: IBasket = {
-  totalPrice: 0,
-  totalCount: 0,
-  pizzasList: [],
+const initialState = {
+  totalPrice: 0 as number,
+  totalCount: 0 as number,
+  pizzasList: [] as Array<BasketItemType>,
+};
+
+export type BasketStateType = typeof initialState;
+
+export type PayloadType = {
+  type: typeof ADD_TO_BASKET;
+  payload: BasketItemType;
 };
 
 export default function pizza(
   state = initialState,
-  { type, payload }: { type: string; payload: IBasketItem }
-): IBasket {
+  { type, payload }: PayloadType
+): BasketStateType {
   const setPizzaItem = () => {
-    let newPizzasList: Array<IBasketItem> = [];
+    let newPizzasList: Array<BasketItemType> = [];
 
     /**
      * Проверка на наличие элементов в массиве пиц. Если в массиве есть хотя бы один элемент, проверяется начличие пиццы с таким же id пиццы,

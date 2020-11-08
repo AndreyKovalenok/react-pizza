@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import basket, { IBasket } from "./reducers/basket";
+import basket, { BasketStateType } from "./reducers/basket";
 import pizzaData, { IPizzaItem } from "./reducers/pizzaData";
 
 export interface IState {
-  basket: IBasket;
+  basket: BasketStateType;
   pizzaData: Array<IPizzaItem>;
 }
 
