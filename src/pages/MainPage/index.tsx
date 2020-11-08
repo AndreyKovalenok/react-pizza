@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import Tab from "../../components/UI/Tab";
 import Sort from "../../components/UI/Sort";
-import Pizza from "../../components/Pizza";
+import Pizza from "./Pizza";
 
 import { StateType } from "../../redux/rootReducer";
 import { PizzaItemType } from "../../redux/reducers/pizzaData";

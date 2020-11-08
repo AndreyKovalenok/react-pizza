@@ -1,146 +1,39 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import styled from "styled-components";
 
 import {
   setDoughType,
   setPizzaSize,
-} from "../../redux/reducers/pizzaData/actions";
-import { BasketItemType } from "../../redux/reducers/basket";
-import { addToBasket } from "../../redux/reducers/basket/actions";
+} from "../../../redux/reducers/pizzaData/actions";
+import { addToBasket } from "../../../redux/reducers/basket/actions";
+import { BasketItemType } from "../../../redux/reducers/basket";
+import { PizzaItemType } from "../../../redux/reducers/pizzaData";
 
-import { PizzaItemType } from "../../redux/reducers/pizzaData";
-
-const StyledPizza = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 28rem;
-`;
-
-const ContentImage = styled.img`
-  object-fit: contain;
-  margin-bottom: 1rem;
-`;
-
-const PizzaTitle = styled.h3`
-  margin-bottom: 2.2rem;
-  font-size: var(--font-size-4);
-  line-height: var(--font-size-5);
-  font-weight: var(--semi-bold-weight);
-`;
-
-const PizzaControls = styled.div`
-  width: 100%;
-  margin-bottom: 1.7rem;
-  padding: 0.7rem 0.4rem;
-  background-color: var(--color-gray-7);
-  border-radius: 1rem;
-`;
-
-const PizzasRow = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-
-  &:first-child {
-    margin-bottom: 0.7rem;
-  }
-`;
-
-interface ButtonProps {
-  active?: boolean;
-  enabled?: boolean;
-}
-
-const ControlsButton = styled.button<ButtonProps>`
-  flex: 1;
-  margin: 0 0.3rem;
-  padding: 1rem 0;
-  text-align: center;
-  font-size: var(--font-size-2);
-  line-height: var(--line-height-1);
-  font-weight: var(--bold-weight);
-  background-color: ${(p) => p.active && "var(--color-white)"};
-  border-radius: 0.5rem;
-  box-shadow: ${(p) =>
-    p.active && "0 0.2rem 0.4rem var(----color-black-opac-3)"};
-  cursor: pointer;
-  transition: 0.2s background-color;
-
-  &:hover:not(:disabled) {
-    background-color: ${(p) => !p.active && "var(--color-whire-opac-1)"};
-    border-radous: 0.5rem;
-    box-shadow: none;
-  }
-
-  &:disabled {
-    opacity: 0.2;
-    color: var(--color-gray-4);
-    cursor: default;
-  }
-`;
-
-const PizzaPrice = styled.p`
-  font-size: var(--font-size-7);
-  line-height: var(--line-height-5);
-  font-weight: var(--bold-weight);
-`;
-
-const AddButton = styled.button`
-  margin-left: auto;
-  padding: 1.1rem 1.8rem 1.1rem 1.7rem;
-  font-size: var(--font-size-3);
-  line-height: var(--line-height-2);
-  font-weight: var(--bold-weight);
-  color: var(--color-main);
-  border-radius: 3rem;
-  border: 0.1rem solid var(--color-main);
-  cursor: pointer;
-  transition: 0.2s all;
-
-  &:hover {
-    color: var(--color-white);
-    background-color: var(--color-main);
-    border-color: var(--color-main);
-  }
-
-  &:hover > svg path {
-    fill: var(--color-white);
-  }
-`;
-
-const AddIcon = styled.svg`
-  margin-right: 0.8rem;
-`;
+import {
+  AddButton,
+  AddIcon,
+  ContentImage,
+  ControlsButton,
+  PizzaControls,
+  PizzaPrice,
+  PizzasRow,
+  PizzaTitle,
+  StyledPizza,
+} from "./styled";
 
 const mapState = () => {
   return {};
 };
 
-const mapDispatch = {
-  dispatchSetDoughType: ({
-    pizzaId,
-    doughId,
-  }: {
-    pizzaId: number;
-    doughId: number;
-  }) => setDoughType({ pizzaId, doughId }),
-  dispatchSetPizzaSize: ({
-    pizzaId,
-    sizesId,
-  }: {
-    pizzaId: number;
-    sizesId: number;
-  }) => setPizzaSize({ pizzaId, sizesId }),
-  dispatchAddToBasket: (basketItem: BasketItemType) => addToBasket(basketItem),
-};
-
-const connector = connect(mapState, mapDispatch);
+const connector = connect(mapState, {
+  setDoughType,
+  setPizzaSize,
+  addToBasket,
+});
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-type Props = PropsFromRedux & PizzaItemType;
+type PropsType = PropsFromRedux & PizzaItemType;
 
 const Pizza = ({
   id,
@@ -150,10 +43,10 @@ const Pizza = ({
   totalPrice,
   dough,
   sizes,
-  dispatchSetDoughType,
-  dispatchSetPizzaSize,
-  dispatchAddToBasket,
-}: Props): JSX.Element => {
+  setDoughType: dispatchSetDoughType,
+  setPizzaSize: dispatchSetPizzaSize,
+  addToBasket: dispatchAddToBasket,
+}: PropsType): JSX.Element => {
   const setBasketPropObj = ({
     id: objId,
     title: objTitle,
