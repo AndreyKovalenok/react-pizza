@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import arrow from "../../../assets/images/arrow.svg";
 import basketClearIcon from "../../../assets/images/basket-clear.svg";
-import basketIcon from "../../../assets/images/basket-icon.svg";
+import basketIcon from "../../../assets/images/dark-basket-icon.svg";
 
 export const BasketFooter = styled.div`
   padding-top: 4rem;
@@ -12,7 +12,7 @@ export const BasketFooter = styled.div`
 export const BasketFooterGroup = styled.div`
   display: flex;
   font-size: var(--font-size-7);
-  line-height: var(--line-height-5);o
+  line-height: var(--line-height-5);
 `;
 
 export const BasketFooterGroupTitle = styled.p`
