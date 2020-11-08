@@ -68,7 +68,13 @@ function MainPage({
             );
           })}
         </Tabs>
-        <Sort />
+        <Sort
+          list={[
+            { id: 0, text: "популярности" },
+            { id: 1, text: "по цене" },
+            { id: 2, text: "по алфавиту" },
+          ]}
+        />
       </Controls>
       <Content>
         <ContentTitle>Все пиццы</ContentTitle>
