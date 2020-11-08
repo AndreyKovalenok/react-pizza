@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const StyledClearButton = styled.button`
+const ClearButton = styled.button`
   position: relative;
   width: 3.2rem;
   height: 3.2rem;
@@ -29,9 +28,5 @@ const StyledClearButton = styled.button`
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 `;
-
-const ClearButton = () => {
-  return <StyledClearButton />;
-};
 
 export default ClearButton;

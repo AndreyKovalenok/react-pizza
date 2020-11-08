@@ -72,7 +72,7 @@ function ActiveBasket({
           }: BasketItemType) => {
             return (
               <PizzaItem
-                key={pizzaId + dough.id + size.id}
+                key={String(pizzaId) + String(dough.id) + String(size.id)}
                 count={count}
                 dough={dough}
                 pizzaId={pizzaId}

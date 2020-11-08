@@ -5,6 +5,7 @@ import { BasketItemType } from "../../../../redux/reducers/basket";
 import {
   incrementBasketItemCount,
   decrementBasketItemCount,
+  removeBasketElement,
 } from "../../../../redux/reducers/basket/actions";
 
 import {
@@ -26,6 +27,7 @@ const mapState = () => {
 const connector = connect(mapState, {
   incrementBasketItemCount,
   decrementBasketItemCount,
+  removeBasketElement,
 });
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
@@ -41,6 +43,7 @@ const PizzaItem = ({
   title,
   incrementBasketItemCount: dispatchIncrementBasketItemCount,
   decrementBasketItemCount: dispatchDecrementBasketItemCount,
+  removeBasketElement: dispatchRemoveBasketElement,
 }: PropsType): JSX.Element => {
   return (
     <StyledPizzaItem>
@@ -63,7 +66,11 @@ const PizzaItem = ({
         />
       </CounterWrap>
       <Price>{price * count} ₽</Price>
-      <ClearButton />
+      <ClearButton
+        onClick={() => {
+          dispatchRemoveBasketElement(pizzaId, doughId, sizeId);
+        }}
+      />
     </StyledPizzaItem>
   );
 };

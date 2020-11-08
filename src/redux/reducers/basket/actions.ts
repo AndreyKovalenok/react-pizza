@@ -4,6 +4,7 @@ import {
   DECREMENT_COUNT,
   CLEAR_BASKET,
   BasketItemType,
+  REMOVE_ELEMENT,
 } from "./index";
 
 type AddToBasketActionType = {
@@ -25,7 +26,6 @@ type IncrementBasketItemCountPayloadType = {
 };
 type IncrementBasketItemCountType = {
   type: typeof INCREMENT_COUNT;
-
   payload: IncrementBasketItemCountPayloadType;
 };
 
@@ -64,5 +64,26 @@ export function decrementBasketItemCount(
 export function clearBasket() {
   return {
     type: CLEAR_BASKET,
+  };
+}
+
+type RemoveBasketElementPayloadType = {
+  pizzaId: number;
+  dough: { id: number };
+  size: { id: number };
+};
+type RemoveBasketElementType = {
+  type: typeof REMOVE_ELEMENT;
+  payload: RemoveBasketElementPayloadType;
+};
+
+export function removeBasketElement(
+  pizzaId: number,
+  doughId: number,
+  sizeId: number
+): RemoveBasketElementType {
+  return {
+    type: REMOVE_ELEMENT,
+    payload: { pizzaId, dough: { id: doughId }, size: { id: sizeId } },
   };
 }
