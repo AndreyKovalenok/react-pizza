@@ -405,8 +405,8 @@ export type PizzaStateType = typeof initialState;
 
 type PizzaPayloadType = {
   pizzaId: number;
-  doughId?: number;
-  sizesId?: number;
+  doughId: number;
+  sizesId: number;
 };
 export type PizzaActionType = {
   type: typeof SET_DOUGH | typeof SET_PIZZA_SIZE;

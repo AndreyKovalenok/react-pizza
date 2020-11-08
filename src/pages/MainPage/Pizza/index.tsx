@@ -6,7 +6,6 @@ import {
   setPizzaSize,
 } from "../../../redux/reducers/pizzaData/actions";
 import { addToBasket } from "../../../redux/reducers/basket/actions";
-import { BasketItemType } from "../../../redux/reducers/basket";
 import { PizzaItemType } from "../../../redux/reducers/pizzaData";
 
 import {
