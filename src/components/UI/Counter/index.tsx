@@ -9,13 +9,15 @@ import {
 
 type CounterType = {
   count: number;
+  increment: () => void;
+  decrement: () => void;
 };
-const Counter = ({ count }: CounterType): JSX.Element => {
+const Counter = ({ count, increment, decrement }: CounterType): JSX.Element => {
   return (
     <StyledCounter>
-      <DecrementButton type="button" />
+      <DecrementButton onClick={decrement} type="button" />
       <Count>{count}</Count>
-      <IncrementButton type="button" />
+      <IncrementButton onClick={increment} type="button" />
     </StyledCounter>
   );
 };

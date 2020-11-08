@@ -1,6 +1,11 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
 
 import { BasketItemType } from "../../../../redux/reducers/basket";
+import {
+  incrementBasketItemCount,
+  decrementBasketItemCount,
+} from "../../../../redux/reducers/basket/actions";
 
 import {
   StyledPizzaItem,
@@ -14,15 +19,29 @@ import {
 import Counter from "../../../../components/UI/Counter";
 import ClearButton from "../../../../components/UI/ClearButton";
 
+const mapState = () => {
+  return {};
+};
+
+const connector = connect(mapState, {
+  incrementBasketItemCount,
+  decrementBasketItemCount,
+});
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type PropsType = PropsFromRedux & BasketItemType;
+
 const PizzaItem = ({
   image,
-  size: { title: sizeTitle },
+  size: { title: sizeTitle, id: sizeId },
   price,
   pizzaId,
-  dough: { title: doughTitle },
+  dough: { title: doughTitle, id: doughId },
   count,
   title,
-}: BasketItemType) => {
+  incrementBasketItemCount: dispatchIncrementBasketItemCount,
+  decrementBasketItemCount: dispatchDecrementBasketItemCount,
+}: PropsType): JSX.Element => {
   return (
     <StyledPizzaItem>
       <Image src={image} />
@@ -33,12 +52,20 @@ const PizzaItem = ({
         </Subtitle>
       </TitleWrapper>
       <CounterWrap>
-        <Counter count={count} />
+        <Counter
+          increment={() => {
+            dispatchIncrementBasketItemCount(pizzaId, doughId, sizeId);
+          }}
+          decrement={() => {
+            dispatchDecrementBasketItemCount(pizzaId, doughId, sizeId);
+          }}
+          count={count}
+        />
       </CounterWrap>
-      <Price>{price} ₽</Price>
+      <Price>{price * count} ₽</Price>
       <ClearButton />
     </StyledPizzaItem>
   );
 };
 
-export default PizzaItem;
+export default connector(PizzaItem);

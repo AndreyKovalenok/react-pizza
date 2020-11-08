@@ -55,18 +55,20 @@ function ActiveBasket({
             price,
             size,
             title,
-          }: BasketItemType) => (
-            <PizzaItem
-              key={pizzaId}
-              count={count}
-              dough={dough}
-              pizzaId={pizzaId}
-              price={price}
-              size={size}
-              image={image}
-              title={title}
-            />
-          )
+          }: BasketItemType) => {
+            return (
+              <PizzaItem
+                key={pizzaId + dough.id + size.id}
+                count={count}
+                dough={dough}
+                pizzaId={pizzaId}
+                price={price}
+                size={size}
+                image={image}
+                title={title}
+              />
+            );
+          }
         )}
       </BasketContent>
       <BasketFooter>

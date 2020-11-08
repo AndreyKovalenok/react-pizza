@@ -1,4 +1,6 @@
 export const ADD_TO_BASKET = "ADD_TO_BASKET";
+export const INCREMENT_COUNT = "INCREMENT_COUNT";
+export const DECREMENT_COUNT = "DECREMENT_COUNT";
 
 export type BasketItemType = {
   pizzaId: number;
@@ -25,7 +27,7 @@ const initialState = {
 export type BasketStateType = typeof initialState;
 
 export type BasketPayloadType = {
-  type: typeof ADD_TO_BASKET;
+  type: typeof ADD_TO_BASKET | typeof INCREMENT_COUNT | typeof DECREMENT_COUNT;
   payload: BasketItemType;
 };
 
@@ -57,7 +59,6 @@ export default function pizza(
           ) {
             newPizzasList.push({
               ...el,
-              price: el.price + payload.price,
               count: el.count + 1,
             });
           } else {
@@ -65,10 +66,10 @@ export default function pizza(
           }
         });
       } else {
-        newPizzasList = [...state.pizzasList, payload];
+        newPizzasList = [...state.pizzasList, { ...payload }];
       }
     } else {
-      newPizzasList.push(payload);
+      newPizzasList.push({ ...payload });
     }
 
     return newPizzasList;
@@ -79,9 +80,61 @@ export default function pizza(
       const pizzasList = [...setPizzaItem()];
       return {
         ...state,
-        totalPrice: pizzasList.reduce((sum, el) => sum + el.price, 0),
+        totalPrice: pizzasList.reduce(
+          (sum, el) => sum + el.price * el.count,
+          0
+        ),
         totalCount: pizzasList.reduce((sum, el) => sum + el.count, 0),
         pizzasList,
+      };
+    }
+    case INCREMENT_COUNT: {
+      const pizzasList = state.pizzasList.map((el: BasketItemType) => {
+        if (
+          el.pizzaId === payload.pizzaId &&
+          el.dough.id === payload.dough.id &&
+          el.size.id === payload.size.id
+        ) {
+          return {
+            ...el,
+            count: el.count + 1,
+          };
+        }
+        return el;
+      });
+      return {
+        ...state,
+        pizzasList,
+        totalPrice: pizzasList.reduce(
+          (sum, el) => sum + el.price * el.count,
+          0
+        ),
+        totalCount: pizzasList.reduce((sum, el) => sum + el.count, 0),
+      };
+    }
+    case DECREMENT_COUNT: {
+      const pizzasList = state.pizzasList.map((el: BasketItemType) => {
+        if (
+          el.pizzaId === payload.pizzaId &&
+          el.dough.id === payload.dough.id &&
+          el.size.id === payload.size.id &&
+          el.count > 0
+        ) {
+          return {
+            ...el,
+            count: el.count - 1,
+          };
+        }
+        return el;
+      });
+      return {
+        ...state,
+        pizzasList,
+        totalPrice: pizzasList.reduce(
+          (sum, el) => sum + el.price * el.count,
+          0
+        ),
+        totalCount: pizzasList.reduce((sum, el) => sum + el.count, 0),
       };
     }
     default:
