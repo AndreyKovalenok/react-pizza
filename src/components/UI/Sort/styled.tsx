@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import arrow from "./dropdown-arrow.svg";
+import arrow from "../../../assets/images/dropdown-arrow.svg";
 
 export const StyledSort = styled.div`
   position: relative;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import basket from "../assets/basket.svg";
+import basket from "../../../assets/images/basket.svg";
 
 import {
   EmptyBasketBanner,

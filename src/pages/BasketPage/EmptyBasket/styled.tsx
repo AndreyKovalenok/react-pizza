@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import emoji from "../assets/emoji.svg";
+import emoji from "../../../assets/images/emoji.svg";
 
 export const EmptyBasketBanner = styled.div`
   display: flex;

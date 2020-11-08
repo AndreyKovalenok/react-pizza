@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import arrow from "../assets/arrow.svg";
-import basketClearIcon from "../assets/basket-clear.svg";
-import basketIcon from "../assets/basket-icon.svg";
+import arrow from "../../../assets/images/arrow.svg";
+import basketClearIcon from "../../../assets/images/basket-clear.svg";
+import basketIcon from "../../../assets/images/basket-icon.svg";
 
 export const BasketFooter = styled.div`
   padding-top: 4rem;

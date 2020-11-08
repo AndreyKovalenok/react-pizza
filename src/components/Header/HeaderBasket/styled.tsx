@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import basketImage from "./basket.svg";
+import basketImage from "../../../assets/images/basket-icon.svg";
 
 export const StyledHeaderBasket = styled(NavLink)`
   padding: 1.5rem 2.3rem;

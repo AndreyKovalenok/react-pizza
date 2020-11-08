@@ -2,7 +2,7 @@ import React from "react";
 
 import style from "./style.module.scss";
 
-import logoImage from "./logo.png";
+import logoImage from "../../../assets/images/logo.png";
 
 function Logo(): JSX.Element {
   return (

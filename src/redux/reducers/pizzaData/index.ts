@@ -1,7 +1,7 @@
-import image0 from "../../../pages/MainPage/image-0.png";
-import image1 from "../../../pages/MainPage/image-1.png";
-import image2 from "../../../pages/MainPage/image-2.png";
-import image3 from "../../../pages/MainPage/image-3.png";
+import image0 from "../../../assets/images/image-0.png";
+import image1 from "../../../assets/images/image-1.png";
+import image2 from "../../../assets/images/image-2.png";
+import image3 from "../../../assets/images/image-3.png";
 
 export const SET_DOUGH = "SET_DOUGH";
 export const SET_PIZZA_SIZE = "SET_PIZZA_SIZE";
