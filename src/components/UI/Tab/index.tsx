@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-interface Props {
+type Props = {
   active: boolean;
-}
+};
 
 const Tab = styled.button<Props>`
   margin: 0 0.4rem;
