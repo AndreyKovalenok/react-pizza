@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const PageContent = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 134rem;
   margin: 5rem 0;
