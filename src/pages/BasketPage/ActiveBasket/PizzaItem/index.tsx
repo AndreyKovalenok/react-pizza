@@ -60,7 +60,11 @@ const PizzaItem = ({
             dispatchIncrementBasketItemCount(pizzaId, doughId, sizeId);
           }}
           decrement={() => {
-            dispatchDecrementBasketItemCount(pizzaId, doughId, sizeId);
+            if (count === 1) {
+              dispatchRemoveBasketElement(pizzaId, doughId, sizeId);
+            } else {
+              dispatchDecrementBasketItemCount(pizzaId, doughId, sizeId);
+            }
           }}
           count={count}
         />
