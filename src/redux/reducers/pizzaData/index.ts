@@ -6,26 +6,28 @@ import image3 from "../../../pages/MainPage/image-3.png";
 export const SET_DOUGH = "SET_DOUGH";
 export const SET_PIZZA_SIZE = "SET_PIZZA_SIZE";
 
+type DoughType = Array<{
+  id: number;
+  additionPrice: number;
+  title: string;
+  enabled: boolean;
+  selected: boolean;
+}>;
+type SizesType = Array<{
+  id: number;
+  additionPrice: number;
+  title: string;
+  enabled: boolean;
+  selected: boolean;
+}>;
 export type PizzaItemType = {
   id: number;
   image: string;
   title: string;
   price: number;
   totalPrice: number;
-  dough: Array<{
-    id: number;
-    additionPrice: number;
-    title: string;
-    enabled: boolean;
-    selected: boolean;
-  }>;
-  sizes: Array<{
-    id: number;
-    additionPrice: number;
-    title: string;
-    enabled: boolean;
-    selected: boolean;
-  }>;
+  dough: DoughType;
+  sizes: SizesType;
 };
 
 const initialState: Array<PizzaItemType> = [
@@ -401,60 +403,57 @@ const initialState: Array<PizzaItemType> = [
 
 export type PizzaStateType = typeof initialState;
 
-export type PizzaPayloadType = {
-  type: typeof SET_DOUGH | typeof SET_PIZZA_SIZE;
-  payload: {
-    pizzaId: number;
-    doughId?: number;
-    sizesId?: number;
-  };
+type PizzaPayloadType = {
+  pizzaId: number;
+  doughId?: number;
+  sizesId?: number;
 };
+export type PizzaActionType = {
+  type: typeof SET_DOUGH | typeof SET_PIZZA_SIZE;
+  payload: PizzaPayloadType;
+};
+
+const setActivePizzaProp = (
+  state: PizzaStateType,
+  payload: PizzaPayloadType,
+  prop: string,
+  id: string
+) =>
+  state.map((el) => {
+    if (el.id === payload.pizzaId) {
+      const currentEl = { ...el };
+      let additionPrice = 0;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // TODO
+      currentEl[prop] = currentEl[prop].map((item) => {
+        if (item.selected) {
+          currentEl.totalPrice -= item.additionPrice;
+        }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // TODO
+        if (item.id === payload[id]) {
+          additionPrice = item.additionPrice;
+          return { ...item, selected: true };
+        }
+        return { ...item, selected: false };
+      });
+      currentEl.totalPrice += additionPrice;
+      return currentEl;
+    }
+    return el;
+  });
 
 export default function index(
   state = initialState,
-  { type, payload }: PizzaPayloadType
+  { type, payload }: PizzaActionType
 ): PizzaStateType {
   switch (type) {
     case SET_DOUGH:
-      return state.map((el) => {
-        if (el.id === payload.pizzaId) {
-          const currentEl = { ...el };
-          let additionPrice = 0;
-          currentEl.dough = currentEl.dough.map((item) => {
-            if (item.selected) {
-              currentEl.totalPrice -= item.additionPrice;
-            }
-            if (item.id === payload.doughId) {
-              additionPrice = item.additionPrice;
-              return { ...item, selected: true };
-            }
-            return { ...item, selected: false };
-          });
-          currentEl.totalPrice += additionPrice;
-          return currentEl;
-        }
-        return el;
-      });
+      return setActivePizzaProp(state, payload, "dough", "doughId");
     case SET_PIZZA_SIZE:
-      return state.map((el) => {
-        if (el.id === payload.pizzaId) {
-          const currentEl = { ...el };
-          let additionPrice = 0;
-          currentEl.sizes = currentEl.sizes.map((item) => {
-            if (item.selected) {
-              currentEl.totalPrice -= item.additionPrice;
-            }
-            if (item.id === payload.sizesId) {
-              additionPrice = item.additionPrice;
-              return { ...item, selected: true };
-            }
-            return { ...item, selected: false };
-          });
-          currentEl.totalPrice += additionPrice;
-          return currentEl;
-        }
-        return el;
-      });
+      return setActivePizzaProp(state, payload, "sizes", "sizesId");
     default:
       return state;
   }
