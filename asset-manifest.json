@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "//github.com/AndreyKovalenok.github.io/react-pizza/static/css/main.6e689ccb.chunk.css",
+    "main.js": "//github.com/AndreyKovalenok.github.io/react-pizza/static/js/main.ef8f74e9.chunk.js",
+    "main.js.map": "//github.com/AndreyKovalenok.github.io/react-pizza/static/js/main.ef8f74e9.chunk.js.map",
+    "runtime-main.js": "//github.com/AndreyKovalenok.github.io/react-pizza/static/js/runtime-main.6c9ea341.js",
+    "runtime-main.js.map": "//github.com/AndreyKovalenok.github.io/react-pizza/static/js/runtime-main.6c9ea341.js.map",
+    "static/js/2.b795c77d.chunk.js": "//github.com/AndreyKovalenok.github.io/react-pizza/static/js/2.b795c77d.chunk.js",
+    "static/js/2.b795c77d.chunk.js.map": "//github.com/AndreyKovalenok.github.io/react-pizza/static/js/2.b795c77d.chunk.js.map",
+    "index.html": "//github.com/AndreyKovalenok.github.io/react-pizza/index.html",
+    "precache-manifest.da8d38875cd3c9c912086cdc61716eee.js": "//github.com/AndreyKovalenok.github.io/react-pizza/precache-manifest.da8d38875cd3c9c912086cdc61716eee.js",
+    "service-worker.js": "//github.com/AndreyKovalenok.github.io/react-pizza/service-worker.js",
+    "static/css/main.6e689ccb.chunk.css.map": "//github.com/AndreyKovalenok.github.io/react-pizza/static/css/main.6e689ccb.chunk.css.map",
+    "static/js/2.b795c77d.chunk.js.LICENSE.txt": "//github.com/AndreyKovalenok.github.io/react-pizza/static/js/2.b795c77d.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/ProximaNova-Regular.2d2ae255.woff",
+    "static/media/arrow.svg": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/arrow.a1b6992a.svg",
+    "static/media/basket-clear.svg": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/basket-clear.5d7ef77b.svg",
+    "static/media/basket-icon.svg": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/basket-icon.11883816.svg",
+    "static/media/basket.svg": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/basket.cb319821.svg",
+    "static/media/dark-basket-icon.svg": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/dark-basket-icon.c6fdc557.svg",
+    "static/media/dropdown-arrow.svg": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/dropdown-arrow.7036d3ff.svg",
+    "static/media/emoji.svg": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/emoji.3bf5a3d7.svg",
+    "static/media/image-0.png": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/image-0.0491805c.png",
+    "static/media/image-1.png": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/image-1.1363a3d5.png",
+    "static/media/image-2.png": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/image-2.c89cd349.png",
+    "static/media/image-3.png": "//github.com/AndreyKovalenok.github.io/react-pizza/static/media/image-3.368436e5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6c9ea341.js",
+    "static/js/2.b795c77d.chunk.js",
+    "static/css/main.6e689ccb.chunk.css",
+    "static/js/main.ef8f74e9.chunk.js"
+  ]
+}
