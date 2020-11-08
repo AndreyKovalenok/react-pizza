@@ -2,7 +2,7 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
-import EmptyBasket from "./EmptyBasket";
+import Index from "./EmptyBasket";
 import ActiveBasket from "./ActiveBasket";
 import { StateType } from "../../redux/rootReducer";
 import { BasketItemType } from "../../redux/reducers/basket";
@@ -23,9 +23,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & BasketItemType;
 
 function BasketPage({ basket: { pizzasList } }: Props): JSX.Element {
-  return (
-    <Section>{!pizzasList.length ? <ActiveBasket /> : <EmptyBasket />}</Section>
-  );
+  return <Section>{!pizzasList.length ? <ActiveBasket /> : <Index />}</Section>;
 }
 
 export default connector(BasketPage);
