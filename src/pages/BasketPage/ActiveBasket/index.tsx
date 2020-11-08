@@ -1,4 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { StateType } from "../../../redux/rootReducer";
+import {
+  BasketStateType,
+  BasketItemType,
+} from "../../../redux/reducers/basket";
 
 import {
   BasketFooter,
@@ -17,7 +24,21 @@ import {
 } from "./styled";
 import PizzaItem from "./PizzaItem";
 
-function ActiveBasket(): JSX.Element {
+const mapState = ({ basket }: StateType) => {
+  return {
+    totalCount: basket.totalCount,
+    totalPrice: basket.totalPrice,
+    pizzasList: basket.pizzasList,
+  };
+};
+
+const connector = connect(mapState);
+
+function ActiveBasket({
+  totalCount,
+  totalPrice,
+  pizzasList,
+}: BasketStateType): JSX.Element {
   return (
     <StyledActiveBasket>
       <BasketHeader>
@@ -25,17 +46,38 @@ function ActiveBasket(): JSX.Element {
         <BasketHeaderClearButton>Очистить корзину</BasketHeaderClearButton>
       </BasketHeader>
       <BasketContent>
-        <PizzaItem />
+        {pizzasList.map(
+          ({
+            image,
+            count,
+            dough,
+            pizzaId,
+            price,
+            size,
+            title,
+          }: BasketItemType) => (
+            <PizzaItem
+              key={pizzaId}
+              count={count}
+              dough={dough}
+              pizzaId={pizzaId}
+              price={price}
+              size={size}
+              image={image}
+              title={title}
+            />
+          )
+        )}
       </BasketContent>
       <BasketFooter>
         <BasketFooterRow>
           <BasketFooterGroup>
             <BasketFooterGroupTitle>Всего пицц:</BasketFooterGroupTitle>
-            <BasketFooterTotalCount>3 шт.</BasketFooterTotalCount>
+            <BasketFooterTotalCount>{totalCount} шт.</BasketFooterTotalCount>
           </BasketFooterGroup>
           <BasketFooterGroup>
             <BasketFooterGroupTitle>Сумма заказа:</BasketFooterGroupTitle>
-            <BasketFooterTotalPrice>900 ₽</BasketFooterTotalPrice>
+            <BasketFooterTotalPrice>{totalPrice} ₽</BasketFooterTotalPrice>
           </BasketFooterGroup>
         </BasketFooterRow>
         <BasketFooterRow>
@@ -47,4 +89,4 @@ function ActiveBasket(): JSX.Element {
   );
 }
 
-export default ActiveBasket;
+export default connector(ActiveBasket);

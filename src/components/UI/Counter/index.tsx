@@ -7,11 +7,14 @@ import {
   StyledCounter,
 } from "./styled";
 
-const Counter = () => {
+type CounterType = {
+  count: number;
+};
+const Counter = ({ count }: CounterType): JSX.Element => {
   return (
     <StyledCounter>
       <DecrementButton type="button" />
-      <Count>0</Count>
+      <Count>{count}</Count>
       <IncrementButton type="button" />
     </StyledCounter>
   );

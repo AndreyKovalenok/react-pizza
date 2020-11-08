@@ -23,7 +23,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & BasketItemType;
 
 function BasketPage({ basket: { pizzasList } }: Props): JSX.Element {
-  return <Section>{!pizzasList.length ? <ActiveBasket /> : <Index />}</Section>;
+  return <Section>{pizzasList.length ? <ActiveBasket /> : <Index />}</Section>;
 }
 
 export default connector(BasketPage);

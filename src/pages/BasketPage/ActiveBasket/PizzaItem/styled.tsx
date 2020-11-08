@@ -31,10 +31,12 @@ export const Subtitle = styled.p`
 export const CounterWrap = styled.div`
   flex-grow: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 9.3rem;
 `;
 
 export const Price = styled.span`
+  width: 10%;
   margin-right: 9.3rem;
   font-size: var(--font-size-7);
   line-height: var(--line-height-5);

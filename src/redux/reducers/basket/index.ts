@@ -2,6 +2,7 @@ export const ADD_TO_BASKET = "ADD_TO_BASKET";
 
 export type BasketItemType = {
   pizzaId: number;
+  title: string;
   dough: {
     id: number;
     title: string;
